@@ -104,6 +104,38 @@
             color: #06B6D4;
         }
 
+        .live-counter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            font-size: 13px;
+            font-weight: 600;
+            color: #06B6D4;
+            white-space: nowrap;
+        }
+
+        .live-counter .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #06B6D4;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        .live-counter .count {
+            font-weight: 800;
+            font-size: 16px;
+        }
+
         /* Hero Section */
         .hero {
             position: relative;
@@ -391,6 +423,10 @@
             <li><a href="#stats">Statistiques</a></li>
             <li><a href="#download">Télécharger</a></li>
         </ul>
+        <div class="live-counter">
+            <span class="dot"></span>
+            <span><span class="count" id="userCount">0</span> utilisateurs</span>
+        </div>
     </nav>
 
     <!-- Hero -->
@@ -476,5 +512,17 @@
     <footer>
         <p>&copy; 2026 <a href="#">Servat BOOSTER</a> - Créé par Servat. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        async function fetchUserCount() {
+            try {
+                const res = await fetch('https://api.counterapi.dev/v1/servatbooster/users');
+                const data = await res.json();
+                document.getElementById('userCount').textContent = data.count.toLocaleString();
+            } catch {}
+        }
+        fetchUserCount();
+        setInterval(fetchUserCount, 10000);
+    </script>
 </body>
 </html>
