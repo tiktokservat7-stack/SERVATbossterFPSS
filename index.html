@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servat BOOSTER - Game Optimizer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #06060C;
+            color: #E0E6ED;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-glow {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
+            z-index: 0;
+            animation: glowMove 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-5%, -5%); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(6, 6, 12, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(26, 29, 46, 0.5);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo .logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #06B6D4, #A855F7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            color: white;
+        }
+
+        .nav-logo span {
+            font-size: 18px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span.accent {
+            color: #06B6D4;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #9CA3AF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #06B6D4;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: #06B6D4;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #06B6D4 50%, #A855F7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #6B7280;
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #06B6D4, #A855F7);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #E0E6ED;
+            border: 1px solid #1A1D2E;
+        }
+
+        .btn-secondary:hover {
+            border-color: #06B6D4;
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        /* Features */
+        .features {
+            position: relative;
+            z-index: 1;
+            padding: 80px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .features-header p {
+            color: #6B7280;
+            font-size: 16px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: #0B0C18;
+            border: 1px solid #1A1D2E;
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #06B6D4;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(6, 182, 212, 0.1);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+
+        .feature-icon.cyan { background: rgba(6, 182, 212, 0.15); }
+        .feature-icon.purple { background: rgba(168, 85, 247, 0.15); }
+        .feature-icon.green { background: rgba(16, 185, 129, 0.15); }
+        .feature-icon.orange { background: rgba(245, 158, 11, 0.15); }
+        .feature-icon.red { background: rgba(239, 68, 68, 0.15); }
+        .feature-icon.blue { background: rgba(59, 130, 246, 0.15); }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: #6B7280;
+            line-height: 1.6;
+        }
+
+        /* Stats */
+        .stats {
+            position: relative;
+            z-index: 1;
+            padding: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: #0B0C18;
+            border: 1px solid #1A1D2E;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .stat-card .number {
+            font-size: 36px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #06B6D4, #A855F7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-card .label {
+            font-size: 13px;
+            color: #6B7280;
+            margin-top: 6px;
+        }
+
+        /* Download Section */
+        .download {
+            position: relative;
+            z-index: 1;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .download-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #0B0C18;
+            border: 1px solid #1A1D2E;
+            border-radius: 20px;
+            padding: 50px;
+        }
+
+        .download-box h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .download-box p {
+            color: #6B7280;
+            font-size: 14px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 40px 60px;
+            text-align: center;
+            border-top: 1px solid #1A1D2E;
+        }
+
+        footer p {
+            color: #4B5563;
+            font-size: 13px;
+        }
+
+        footer p a {
+            color: #06B6D4;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 16px 20px; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 40px; }
+            .hero p { font-size: 16px; }
+            .features { padding: 40px 20px; }
+            .features-header h2 { font-size: 28px; }
+            .stats { padding: 40px 20px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .download { padding: 40px 20px; }
+            .download-box { padding: 30px 20px; }
+            footer { padding: 30px 20px; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #06060C; }
+        ::-webkit-scrollbar-thumb { background: #1A1D2E; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2D2B55; }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <div class="logo-icon">S</div>
+            <span>SERVAT <span class="accent">BOOSTER</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Fonctionnalités</a></li>
+            <li><a href="#stats">Statistiques</a></li>
+            <li><a href="#download">Télécharger</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">&#x26A1; Game Optimizer v1.0</div>
+        <h1>Servat BOOSTER</h1>
+        <p>Optimisez vos jeux vidéo comme jamais. Boostez vos performances, réduisez la latence et libérez la puissance de votre PC en un clic.</p>
+        <div class="hero-buttons">
+            <a href="#download" class="btn btn-primary">&#x2B07; TÉLÉCHARGER</a>
+            <a href="#features" class="btn btn-secondary">EN SAVOIR PLUS</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="features-header">
+            <h2>Optimisations puissantes</h2>
+            <p>Tout ce dont vous avez besoin pour des performances de jeu maximales</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon cyan">&#x26A1;</div>
+                <h3>Ultimate Performance</h3>
+                <p>Active le plan d'alimentation Ultra Performance et désactive les limitations CPU/GPU pour des performances brutes maximales.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon purple">&#x1F9F0;</div>
+                <h3>RAM Booster</h3>
+                <p>Libère la mémoire standby et ferme les processus inutiles pour donner plus de RAM à vos jeux.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon green">&#x1F4E1;</div>
+                <h3>Réduction de Latence</h3>
+                <p>Désactive Nagle, le throttling réseau et optimise TCP pour réduire votre ping dans les jeux en ligne.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon orange">&#x1F3AE;</div>
+                <h3>Optimisation Jeux</h3>
+                <p>Désactive les optimisations plein écran, le Game Bar/DVR et priorise le processus du jeu automatiquement.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon red">&#x1F6E1;&#xFE0F;</div>
+                <h3>Désactivation Defender</h3>
+                <p>Désactive temporairement Windows Defender pour éviter les ralentissements pendant vos sessions de jeu.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon blue">&#x2328;&#xFE0F;</div>
+                <h3>Macros Personnalisées</h3>
+                <p>Créez vos propres macros clavier avec répétitions automatiques pour automatiser vos actions en jeu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats" id="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">15+</div>
+                <div class="label">Optimisations</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">-30%</div>
+                <div class="label">Latence réseau</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">2 Go+</div>
+                <div class="label">RAM libérée</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download -->
+    <section class="download" id="download">
+        <div class="download-box">
+            <h2>&#x2B07; Prêt à booster ?</h2>
+            <p>Téléchargez Servat BOOSTER maintenant et donnez un coup de boost à vos jeux vidéo. Compatible Windows 10 et 11.</p>
+            <a href="ServatBooster.zip" class="btn btn-primary" style="display: inline-block;">&#x2B07; TÉLÉCHARGER SERVAT BOOSTER</a>
+            <p style="margin-top: 16px; font-size: 11px; color: #4B5563;">Version 1.0 - Mises à jour hebdomadaires</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <a href="#">Servat BOOSTER</a> - Créé par Servat. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
