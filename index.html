@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servat BOOSTER - Game Optimizer</title>
     <style>
+        :root {
+            --accent: #06B6D4;
+            --accent2: #A855F7;
+            --bg-base: #06060C;
+            --bg-card: #0B0C18;
+            --bg-side: #080914;
+            --border: #1A1D2E;
+            --text: #E0E6ED;
+            --text-muted: #6B7280;
+            --text-nav: #9CA3AF;
+            --text-dark: #4B5563;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,8 +28,8 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
-            background: #06060C;
-            color: #E0E6ED;
+            background: var(--bg-base);
+            color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -65,7 +78,7 @@
             width: 36px;
             height: 36px;
             border-radius: 10px;
-            background: linear-gradient(135deg, #06B6D4, #A855F7);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -82,7 +95,7 @@
         }
 
         .nav-logo span.accent {
-            color: #06B6D4;
+            color: var(--accent);
             font-weight: 700;
         }
 
@@ -93,7 +106,7 @@
         }
 
         .nav-links a {
-            color: #9CA3AF;
+            color: var(--text-nav);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -101,7 +114,7 @@
         }
 
         .nav-links a:hover {
-            color: #06B6D4;
+            color: var(--accent);
         }
 
         .live-counter {
@@ -114,7 +127,7 @@
             border: 1px solid rgba(6, 182, 212, 0.3);
             font-size: 13px;
             font-weight: 600;
-            color: #06B6D4;
+            color: var(--accent);
             white-space: nowrap;
         }
 
@@ -122,7 +135,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #06B6D4;
+            background: var(--accent);
             animation: pulse-dot 1.5s ease-in-out infinite;
         }
 
@@ -155,7 +168,7 @@
             border-radius: 50px;
             background: rgba(6, 182, 212, 0.1);
             border: 1px solid rgba(6, 182, 212, 0.3);
-            color: #06B6D4;
+            color: var(--accent);
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
@@ -168,7 +181,7 @@
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #06B6D4 50%, #A855F7 100%);
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent) 50%, var(--accent2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -176,7 +189,7 @@
 
         .hero p {
             font-size: 18px;
-            color: #6B7280;
+            color: var(--text-muted);
             max-width: 600px;
             line-height: 1.7;
             margin-bottom: 40px;
@@ -202,7 +215,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #06B6D4, #A855F7);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
             color: white;
         }
 
@@ -213,12 +226,12 @@
 
         .btn-secondary {
             background: transparent;
-            color: #E0E6ED;
-            border: 1px solid #1A1D2E;
+            color: var(--text);
+            border: 1px solid var(--border);
         }
 
         .btn-secondary:hover {
-            border-color: #06B6D4;
+            border-color: var(--accent);
             background: rgba(6, 182, 212, 0.05);
         }
 
@@ -244,7 +257,7 @@
         }
 
         .features-header p {
-            color: #6B7280;
+            color: var(--text-muted);
             font-size: 16px;
         }
 
@@ -255,15 +268,15 @@
         }
 
         .feature-card {
-            background: #0B0C18;
-            border: 1px solid #1A1D2E;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 30px;
             transition: all 0.3s;
         }
 
         .feature-card:hover {
-            border-color: #06B6D4;
+            border-color: var(--accent);
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(6, 182, 212, 0.1);
         }
@@ -295,7 +308,7 @@
 
         .feature-card p {
             font-size: 13px;
-            color: #6B7280;
+            color: var(--text-muted);
             line-height: 1.6;
         }
 
@@ -316,8 +329,8 @@
         }
 
         .stat-card {
-            background: #0B0C18;
-            border: 1px solid #1A1D2E;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 30px;
         }
@@ -325,7 +338,7 @@
         .stat-card .number {
             font-size: 36px;
             font-weight: 900;
-            background: linear-gradient(135deg, #06B6D4, #A855F7);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -333,7 +346,7 @@
 
         .stat-card .label {
             font-size: 13px;
-            color: #6B7280;
+            color: var(--text-muted);
             margin-top: 6px;
         }
 
@@ -348,8 +361,8 @@
         .download-box {
             max-width: 600px;
             margin: 0 auto;
-            background: #0B0C18;
-            border: 1px solid #1A1D2E;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 20px;
             padding: 50px;
         }
@@ -362,7 +375,7 @@
         }
 
         .download-box p {
-            color: #6B7280;
+            color: var(--text-muted);
             font-size: 14px;
             margin-bottom: 30px;
             line-height: 1.6;
@@ -374,16 +387,16 @@
             z-index: 1;
             padding: 40px 60px;
             text-align: center;
-            border-top: 1px solid #1A1D2E;
+            border-top: 1px solid var(--border);
         }
 
         footer p {
-            color: #4B5563;
+            color: var(--text-dark);
             font-size: 13px;
         }
 
         footer p a {
-            color: #06B6D4;
+            color: var(--accent);
             text-decoration: none;
         }
 
@@ -404,9 +417,124 @@
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #06060C; }
-        ::-webkit-scrollbar-thumb { background: #1A1D2E; border-radius: 3px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #2D2B55; }
+
+        /* Admin Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            width: 360px;
+            max-width: 90vw;
+        }
+        .modal-box h2 {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 8px;
+        }
+        .modal-box p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        .modal-box input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            font-family: inherit;
+            margin-bottom: 12px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .modal-box input:focus {
+            border-color: var(--accent);
+        }
+        .modal-box input::placeholder {
+            color: var(--text-dark);
+        }
+        .modal-box .btn-modal {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        .modal-box .btn-login {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: white;
+            margin-bottom: 8px;
+        }
+        .modal-box .btn-login:hover {
+            opacity: 0.9;
+        }
+        .modal-box .btn-cancel {
+            background: transparent;
+            color: var(--text-nav);
+            border: 1px solid var(--border);
+        }
+        .modal-box .btn-cancel:hover {
+            border-color: var(--accent);
+        }
+
+        .color-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: var(--bg-base);
+            border-radius: 8px;
+        }
+        .color-row label {
+            flex: 1;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .color-row input[type="color"] {
+            width: 40px;
+            height: 36px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: none;
+            cursor: pointer;
+            padding: 2px;
+        }
+        .color-row .hex {
+            font-size: 11px;
+            color: var(--text-nav);
+            font-family: monospace;
+            width: 72px;
+            text-align: right;
+        }
+        #colorControls {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 16px;
+        }
     </style>
 </head>
 <body>
@@ -422,6 +550,7 @@
             <li><a href="#features">Fonctionnalités</a></li>
             <li><a href="#stats">Statistiques</a></li>
             <li><a href="#download">Télécharger</a></li>
+            <li><a href="#" id="adminBtn" style="color:var(--accent2);">Admin</a></li>
         </ul>
         <div class="live-counter">
             <span class="dot"></span>
@@ -504,9 +633,32 @@
             <h2>&#x2B07; Prêt à booster ?</h2>
             <p>Téléchargez Servat BOOSTER maintenant et donnez un coup de boost à vos jeux vidéo. Compatible Windows 10 et 11.</p>
             <a href="ServatBooster.zip" class="btn btn-primary" style="display: inline-block;">&#x2B07; TÉLÉCHARGER SERVAT BOOSTER</a>
-            <p style="margin-top: 16px; font-size: 11px; color: #4B5563;">Version 1.0 - Mises à jour hebdomadaires</p>
+            <p style="margin-top: 16px; font-size: 11px; color: var(--text-dark);">Version 1.0 - Mises à jour hebdomadaires</p>
         </div>
     </section>
+
+    <!-- Admin Login Modal -->
+    <div class="modal-overlay" id="adminLoginModal">
+        <div class="modal-box">
+            <h2>Admin</h2>
+            <p>Entrez le code d'accès</p>
+            <input type="password" id="adminCode" placeholder="Code à 4 chiffres" autocomplete="off" maxlength="4" onkeydown="if(event.key==='Enter') adminLogin()">
+            <button class="btn-modal btn-login" onclick="adminLogin()">Valider</button>
+            <button class="btn-modal btn-cancel" onclick="closeAdmin('adminLoginModal')">Annuler</button>
+        </div>
+    </div>
+
+    <!-- Admin Color Panel -->
+    <div class="modal-overlay" id="adminPanelModal">
+        <div class="modal-box" style="width:420px;">
+            <h2>🎨 Personnaliser les couleurs</h2>
+            <p>Modifiez les couleurs du site pour tous les visiteurs</p>
+            <div id="colorControls"></div>
+            <button class="btn-modal btn-login" onclick="saveColors()">💾 Sauvegarder</button>
+            <button class="btn-modal btn-cancel" style="margin-top:6px;" onclick="resetColors()">↺ Réinitialiser</button>
+            <button class="btn-modal btn-cancel" style="margin-top:6px;" onclick="closeAdmin('adminPanelModal')">Fermer</button>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -523,6 +675,96 @@
         }
         fetchUserCount();
         setInterval(fetchUserCount, 10000);
+
+        const colorKeys = [
+            { key: '--accent', label: 'Accent principal', default: '#06B6D4' },
+            { key: '--accent2', label: 'Accent secondaire', default: '#A855F7' },
+            { key: '--bg-base', label: 'Fond principal', default: '#06060C' },
+            { key: '--bg-card', label: 'Fond cartes', default: '#0B0C18' },
+            { key: '--bg-side', label: 'Fond sidebar', default: '#080914' },
+            { key: '--border', label: 'Bordures', default: '#1A1D2E' },
+            { key: '--text', label: 'Texte principal', default: '#E0E6ED' },
+            { key: '--text-muted', label: 'Texte secondaire', default: '#6B7280' },
+            { key: '--text-nav', label: 'Texte navigation', default: '#9CA3AF' },
+            { key: '--text-dark', label: 'Texte sombre', default: '#4B5563' },
+        ];
+
+        function buildColorControls() {
+            const container = document.getElementById('colorControls');
+            container.innerHTML = '';
+            const saved = JSON.parse(localStorage.getItem('siteColors') || '{}');
+            for (const c of colorKeys) {
+                const val = saved[c.key] || c.default;
+                const row = document.createElement('div');
+                row.className = 'color-row';
+                row.innerHTML = '<label>' + c.label + '</label>' +
+                    '<input type="color" data-key="' + c.key + '" value="' + val + '" oninput="updateColor(this)">' +
+                    '<span class="hex" id="hex-' + c.key.replace('--', '') + '">' + val + '</span>';
+                container.appendChild(row);
+            }
+        }
+
+        function updateColor(el) {
+            const key = el.getAttribute('data-key');
+            document.getElementById('hex-' + key.replace('--', '')).textContent = el.value;
+            document.documentElement.style.setProperty(key, el.value);
+        }
+
+        function saveColors() {
+            const saved = {};
+            document.querySelectorAll('#colorControls input[type="color"]').forEach(function(el) {
+                saved[el.getAttribute('data-key')] = el.value;
+            });
+            localStorage.setItem('siteColors', JSON.stringify(saved));
+            alert('✅ Couleurs sauvegardées !');
+            closeAdmin('adminPanelModal');
+        }
+
+        function resetColors() {
+            localStorage.removeItem('siteColors');
+            for (const c of colorKeys) {
+                document.documentElement.style.setProperty(c.key, c.default);
+            }
+            buildColorControls();
+            alert('↺ Couleurs réinitialisées');
+        }
+
+        function loadSavedColors() {
+            const saved = JSON.parse(localStorage.getItem('siteColors') || '{}');
+            for (const c of colorKeys) {
+                const val = saved[c.key];
+                if (val) document.documentElement.style.setProperty(c.key, val);
+            }
+        }
+        loadSavedColors();
+
+        document.getElementById('adminBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('adminLoginModal').classList.add('active');
+            document.getElementById('adminCode').value = '';
+        });
+
+        function closeAdmin(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function adminLogin() {
+            const code = document.getElementById('adminCode').value;
+            if (code === '5555') {
+                closeAdmin('adminLoginModal');
+                buildColorControls();
+                document.getElementById('adminPanelModal').classList.add('active');
+            } else {
+                alert('❌ Code incorrect');
+            }
+        }
+
+        document.getElementById('adminLoginModal').addEventListener('click', function(e) {
+            if (e.target === this) closeAdmin('adminLoginModal');
+        });
+        document.getElementById('adminPanelModal').addEventListener('click', function(e) {
+            if (e.target === this) closeAdmin('adminPanelModal');
+        });
     </script>
 </body>
 </html>
